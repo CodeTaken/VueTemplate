@@ -6,6 +6,10 @@ import store  from './store'
 
 import './assets/stylus/index.styl'
 
+// vue-wechat-title
+import VueWechatTitle from 'vue-wechat-title'
+Vue.use(VueWechatTitle)
+
 // vue-lazyload
 import VueLazyloader from 'vue-lazyload'
 import lazyloadingImg from './assets/images/lazyDefault.png'
