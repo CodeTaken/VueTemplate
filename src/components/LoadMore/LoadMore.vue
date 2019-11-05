@@ -15,7 +15,16 @@
         },
         data () {
             return {}
-        }
+        },
+      beforeCreate(){
+        console.log('子组件的 beforeCreate');
+      },
+      created(){
+        console.log('子组件的 created');
+      },
+      mounted(){
+        console.log('子组件的 mounted');
+      },
     }
 </script>
 
