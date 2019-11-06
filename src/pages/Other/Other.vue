@@ -5,51 +5,22 @@
       <input type="text"  v-model="obj.a">
       <button @click="changeObj">changeObj</button>
       <LoadMore ></LoadMore>
-      <router-link to="/other">跳转</router-link>
-
-
-      <Elinput v-model="someValue"></Elinput>
-      <p> {{someValue}}</p>
-
-      <ElinputItem label="用户名" prop="name">
-         <Elinput v-model="form.userName"></Elinput>
-      </ElinputItem>
-      <ElinputItem label="密码" prop="password">
-        <Elinput v-model="form.pwd" type="password"></Elinput>
-      </ElinputItem>
-      <p>{{form}}</p>
+      <router-link to="/home">跳转</router-link>
     </div>
 </template>
 
-///v-model是一个语法糖，等于:value+@input
-
 <script>
   import LoadMore from '../../components/LoadMore/LoadMore'
-  import Elinput from '../../components/Input/Input'
-  import ElinputItem from '../../components/InputItem/InputItem'
     export default {
       name: "Home",
-      provide(){
-        return{
-          Pvalue:'父元素的 provide'
-        }
-      },
       components:{
-        LoadMore,
-        Elinput,
-        ElinputItem
+        LoadMore
       },
       data(){
         return {
           obj:{
             a:'123'
-          },
-          someValue:'',
-          form:{
-            userName:'',
-            pwd:''
           }
-
         }
       },
       watch:{
@@ -70,9 +41,6 @@
         changeObj(){
          this.obj.a='我是改变的 A'
           console.log(this);
-        },
-        handleInput(value){
-          this.someValue = value
         }
       },
       beforeCreate(){
@@ -112,7 +80,6 @@
         next()
       },
       beforeRouteUpdate(to,from,next){
-        // 路由参数变化时触发，例如：/pages/detail/123  /pages/detail/125  watch $router
         console.log('beforeRouteUpdate');
         console.log(to);
         console.log(from);
