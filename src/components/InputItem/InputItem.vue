@@ -29,16 +29,23 @@
             console.log(e.target.value);
             // 通知父组件
           this.$emit('kinput',e.target.value)
+        },
+        validate (val){
+          console.log('校验值',val);
+          // async-validate
         }
+
       },
       beforeCreate(){
         console.log('子组件的 beforeCreate');
       },
       created(){
         console.log('子组件的 created');
+        this.$on('validate',this.validate)
       },
       mounted(){
         console.log('子组件的 mounted');
+
       },
     }
 </script>

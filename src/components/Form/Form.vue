@@ -1,23 +1,26 @@
 <template>
-  <div>
-    <input :type="type" :value="inputValue" @input="inputHandle">
-    <!--<p>{{Pvalue}}</p>-->
-  </div>
+  <form>
+     <slot></slot>
+  </form>
 
 </template>
 
 <script>
     export default {
         props:{
-            value:{
-              type:String,
-              default:''
+            model:{
+              type:Object,
+              required:true
             },
-            type:{
-              type:String,
-              default:'text'
+            rules:{
+              type:Object,
             }
         },
+      provide(){
+          return{  
+              form:this
+          }
+      },
       inject:['Pvalue'],
         data () {
             return {
@@ -30,9 +33,6 @@
             //console.log(e.target.value);
             // 通知父组件
           this.$emit('input',this.inputValue)
-
-          // 通知父级校验
-          this.$parent.$emit('validate',this.inputValue)
         }
       },
       beforeCreate(){

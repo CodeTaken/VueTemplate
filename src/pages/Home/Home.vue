@@ -18,6 +18,19 @@
         <Elinput v-model="form.pwd" type="password"></Elinput>
       </ElinputItem>
       <p>{{form}}</p>
+
+
+      <ElForm :model="form2" :rule="rules">
+        <ElinputItem label="用户名" prop="name">
+          <Elinput v-model="form2.userName"></Elinput>
+        </ElinputItem>
+        <ElinputItem label="密码" prop="password">
+          <Elinput v-model="form2.pwd" type="password"></Elinput>
+        </ElinputItem>
+
+      </ElForm>
+
+
     </div>
 </template>
 
@@ -27,6 +40,8 @@
   import LoadMore from '../../components/LoadMore/LoadMore'
   import Elinput from '../../components/Input/Input'
   import ElinputItem from '../../components/InputItem/InputItem'
+  import ElForm from '../../components/Form/Form'
+
     export default {
       name: "Home",
       provide(){
@@ -37,7 +52,8 @@
       components:{
         LoadMore,
         Elinput,
-        ElinputItem
+        ElinputItem,
+        ElForm
       },
       data(){
         return {
@@ -48,6 +64,17 @@
           form:{
             userName:'',
             pwd:''
+          },
+          form2:{
+            userName:'',
+            pwd:''
+          },
+          rules:{
+            name:[
+              {required:true,message:"请输入名称"},
+              {min:6,max:10,message:"请输入6到10位"}
+            ],
+            pwd:[{required:true,message:"请输入密码"}]
           }
 
         }
